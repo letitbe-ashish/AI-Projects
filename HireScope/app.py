@@ -52,7 +52,7 @@ def analyze_resume_with_groq(resume_text, job_role):
 
     response = groq_client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="meta-llama/llama-4-maverick-17b-128e-instruct",
+        model="llama-3.1-8b-instant",
         temperature=0.2,
     )
 
