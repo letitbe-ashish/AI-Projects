@@ -1,0 +1,33 @@
+# ── Runtime data (never commit these) ──────────────────────────────────────
+chatbot.db          # LangGraph SQLite conversation history
+chroma_db/          # ChromaDB vector store (per-thread embeddings)
+docs/               # Uploaded user documents (per-thread folders)
+
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# ── Virtual environments ────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── IDE / OS ────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Secrets / env files ─────────────────────────────────────────────────────
+.env
+.env.*
+*.key
