@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireScope - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#667eea] to-[#000000]"
+  >
+    <div class="flex justify-center items-center w-full">
+      <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+        <div class="text-center mb-4">
+          <img
+            src="./static/images/logo.png"
+            class="w-30 rounded-md"
+            alt="Logo"
+          />
+          <p class="text-gray-500">Resume Ranking & Shortlisting Tool</p>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div
+          class="mb-4 px-4 py-2 rounded text-white {% if category == 'error' %} bg-red-500 {% else %} bg-green-500 {% endif %}"
+        >
+          {{ message }}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+
+        <form method="POST">
+          <div class="mb-3">
+            <label for="userid" class="font-semibold text-[#2c3e50] mb-2 block"
+              >Enter Username</label
+            >
+            <input
+              type="text"
+              class="w-full px-4 py-2 border-2 border-[#e9ecef] rounded-lg focus:outline-none focus:border-[#3498db]"
+              id="username"
+              name="username"
+              required
+            />
+            <label
+              for="password"
+              class="font-semibold text-[#2c3e50] mb-2 block"
+              >Enter Password</label
+            >
+            <input
+              type="password"
+              class="w-full px-4 py-2 border-2 border-[#e9ecef] rounded-lg focus:outline-none focus:border-[#3498db]"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="rounded-lg px-6 py-3 font-medium bg-[#3498db] text-white hover:bg-[#2980b9] w-full"
+          >
+            Login
+          </button>
+        </form>
+        <h2>Demo ID: admin <br> Pswd: admin123</h2>
+      </div>
+    </div>
+  </body>
+</html>

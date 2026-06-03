@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireScope - Upload Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script
+      src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+      type="module"
+    ></script>
+  </head>
+  <body>
+    <div class="flex min-h-screen">
+        <!--Navbar Toggle-->
+      <button
+        id="sidebar-toggle"
+        class="fixed top-4 left-4 z-50 p-2 rounded-md bg-[#3498db] text-white md:hidden"
+      >
+        <i id="toggle-icon" class="fas fa-bars h-6 w-6"></i>
+        
+      </button>
+     <!--Navbar-->
+      <nav
+        id="sidebar"
+        class="w-64 bg-[#2c3e50] text-white p-0 fixed h-screen overflow-y-auto transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 md:block z-40"
+      >
+        <div class="p-6 border-b border-[#34495e]">
+          <img
+            src="./static/images/logo.png"
+            class="w-30 rounded-md"
+            alt="Logo"
+          />
+        </div>
+        <ul class="list-none p-0 m-0">
+          <li class="border-b border-[#34495e]">
+            <a
+              href="{{ url_for('upload') }}"
+              class="block px-6 py-4 text-[#ecf0f1] no-underline transition-colors bg-[#3498db] text-white"
+              ><i class="fa-solid fa-upload"></i> Upload Resume</a
+            >
+          </li>
+          <li class="border-b border-[#34495e]">
+            <a
+              href="{{ url_for('candidates') }}"
+              class="block px-6 py-4 text-[#ecf0f1] no-underline transition-colors hover:bg-[#3498db]"
+              ><i class="fa-solid fa-users"></i> All Candidates</a
+            >
+          </li>
+          <li class="border-b border-[#34495e]">
+            <a
+              href="{{ url_for('shortlisted') }}"
+              class="block px-6 py-4 text-[#ecf0f1] no-underline transition-colors hover:bg-[#3498db]"
+              ><i class="fa-solid fa-check-double"></i> Shortlisted</a
+            >
+          </li>
+          <li class="border-b border-[#34495e]">
+            <a
+              href="{{ url_for('logout') }}"
+              class="block px-6 py-4 text-[#e74c3c] no-underline transition-colors hover:bg-[#e74c3c] hover: text-white"
+              ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div
+        id="sidebar-overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"
+      ></div>
+      <!--maincontent-->
+      <main class="flex-1 p-4 md:ml-64 md:p-8">
+        <div class="mb-8">
+          <h1 class="text-[#2c3e50] font-bold text-3xl mb-2">Upload Resume</h1>
+        </div>
+
+        <div
+          class="bg-white p-8 rounded-lg shadow-md mb-8 flex flex-col md:flex-row items-center"
+        >
+          <!--Upload Form-->
+          <form method="POST" enctype="multipart/form-data" class="w-full md:w-1/2 pr-4">
+            <div class="flex flex-wrap -mx-2 mb-4">
+              <div class="w-full px-2">
+                <div class="mb-3">
+                  <label
+                    for="job_role"
+                    class="font-semibold text-[#2c3e50] mb-2 block"
+                    >Job Role:</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full px-4 py-2 border-2 border-[#e9ecef] rounded-lg focus:outline-none focus:border-[#3498db]"
+                    id="job_role"
+                    name="job_role"
+                    placeholder="e.g., Software Engineer, Data Scientist, Marketing Manager"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label
+                for="resume"
+                class="font-semibold text-[#2c3e50] mb-2 block"
+                >Upload Resume:</label
+              >
+              <input
+                type="file"
+                class="w-full px-4 py-2 border-2 border-[#e9ecef] rounded-lg focus:outline-none focus:border-[#3498db]"
+                id="resume"
+                name="resume"
+                accept=".pdf"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="rounded-lg px-6 py-3 font-medium bg-[#3498db] text-white hover:bg-[#2980b9]"
+            >
+              Process Resume
+            </button>
+          </form>
+
+          <!--Lottiefile Animation-->
+          <div class="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+            <dotlottie-wc
+              src="https://lottie.host/a3eb2d3c-3a69-4f93-a76e-1ac1d5f0088a/Gllb5PAoNN.lottie"
+              style="width: 300px; height: 300px"
+              speed="1"
+              autoplay
+              loop
+            ></dotlottie-wc>
+          </div>
+        </div>
+        <!--Instructions-->
+        <div class="bg-white p-8 rounded-lg shadow-md mt-5">
+          <h3>How it works:</h3>
+          <div class="flex flex-wrap -mx-2">
+            <div class="w-full md:w-1/3 px-2">
+              <div class="text-center p-6 bg-gray-50 rounded-lg mb-4 shadow-md">
+                <h5 class="text-[#3498db] mb-4">1. Upload</h5>
+                <p>Select job role and upload a resume in PDF format</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/3 px-2">
+              <div class="text-center p-6 bg-gray-50 rounded-lg mb-4 shadow-md">
+                <h5 class="text-[#3498db] mb-4">2. AI Analyses The Resume</h5>
+                <p>Gorq AI matches the resume against the job requirements</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/3 px-2">
+              <div class="text-center p-6 bg-gray-50 rounded-lg mb-4 shadow-md">
+                <h5 class="text-[#3498db] mb-4">3. Results</h5>
+                <p>Shows match percentage and candidate details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+    
+      const sidebar = document.getElementById("sidebar");
+      const sidebarToggle = document.getElementById("sidebar-toggle");
+      const sidebarOverlay = document.getElementById("sidebar-overlay");
+      const toggleIcon = document.getElementById("toggle-icon");
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("-translate-x-full");
+        sidebarOverlay.classList.toggle("hidden");
+
+        if (sidebar.classList.contains("-translate-x-full")) {
+          toggleIcon.classList.remove("fa-times");
+          toggleIcon.classList.add("fa-bars");
+        } else {
+          toggleIcon.classList.remove("fa-bars");
+          toggleIcon.classList.add("fa-times");
+        }
+      }
+
+      sidebarToggle.addEventListener("click", toggleSidebar);
+      sidebarOverlay.addEventListener("click", toggleSidebar);
+    </script>
+  </body>
+</html>
