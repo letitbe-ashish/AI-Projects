@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.secret_key = 'borntodie'
 app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-groq_client = Groq(api_key="Your Key HERE")# groq key
+groq_client = Groq(api_key="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")# groq key
 
 
 # text extract function
@@ -52,7 +52,7 @@ def analyze_resume_with_groq(resume_text, job_role):
 
     response = groq_client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="meta-llama/llama-4-maverick-17b-128e-instruct",
+        model="llama-3.1-8b-instant",
         temperature=0.2,
     )
 
