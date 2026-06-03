@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.secret_key = 'borntodie'
 app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-groq_client = Groq(api_key="Your Key HERE")# groq key
+groq_client = Groq(api_key="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")# groq key
 
 
 # text extract function
